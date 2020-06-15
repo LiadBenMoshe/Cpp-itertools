@@ -42,10 +42,7 @@ class accumulate{
             iterator(typename T::iterator temp,decltype(*(contain.begin())) tsum,F f11): current(temp),sum(tsum),f1(f11){//Works
             }
 
-           // iterator(typename T::iterator temp){// Not working
-           // this->current=temp;
-           // }
-
+           
 
              decltype(*contain.begin()) operator*() { return sum; }
              bool operator==( iterator& other)  { return current == other.current; }
