@@ -23,7 +23,11 @@ class compress{
             iterator(){}
             iterator(typename T::iterator temp,typename T::iterator end1,typename F::iterator temp2,typename F::iterator end3):
             current(temp),end(end1),current2(temp2),end2(end3){//Works
-           
+           while(!(*current2) && current!=end && current2!=end2){
+                current++;
+                current2++;
+             }
+                
 
 
             }

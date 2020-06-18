@@ -27,14 +27,14 @@ class accumulate{
      
    
    
-    accumulate( T con,F func=Sum()):contain(con),function(func){   
+    accumulate(T con,F func=Sum()):contain(con),function(func){   
     }
 
    
     
     class iterator{
             typename T::iterator current;
-            decltype(*(contain.begin())) sum;
+            typename decay<decltype(*(contain.begin()))>::type sum;
              F f1;
 
              public:
@@ -42,6 +42,13 @@ class accumulate{
             iterator(typename T::iterator temp,decltype(*(contain.begin())) tsum,F f11): current(temp),sum(tsum),f1(f11){//Works
             }
 
+            //dont work
+           /* iterator(typename T::iterator temp,decltype(*(contain.begin())) tsum,F f11){
+                this->current=temp;
+                this->sum=tsum;
+                this->f1=f11;
+            }
+*/
            
 
              decltype(*contain.begin()) operator*() { return sum; }
@@ -51,8 +58,9 @@ class accumulate{
              current++;
              try
              {
+                 
                   sum=f1(sum,*current);
-             }
+             } 
              catch(const std::exception& e)
              {
                  
